@@ -47,3 +47,49 @@ Base.metadata.create_all(engine)
 
 
 
+# Adriana Esparza - ORM Classes for MenuItem and OrderItem
+# For classes.py
+from typing import List
+from sqlalchemy import create_engine, ForeignKey, String, Integer, Float
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
+
+# Connect to PostgreSQL
+engine = create_engine("postgresql+psycopg2://postgres:Holaholahola@localhost/postgres")
+
+# Base class
+class Base(DeclarativeBase):
+    pass
+
+# Define MenuItem
+class MenuItem(Base):
+    __tablename__ = "menu_item"
+
+    menu_item_id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
+    description: Mapped[str] = mapped_column(String(255))
+    price: Mapped[float] = mapped_column(Float, nullable=False)
+    category: Mapped[str] = mapped_column(String(50), nullable=False)
+
+    order_items: Mapped[List["OrderItem"]] = relationship("OrderItem", back_populates="menu_item")
+
+    def __repr__(self) -> str:
+        return f"MenuItem(id={self.menu_item_id}, name={self.name}, price={self.price})"
+
+# Define OrderItem
+class OrderItem(Base):
+    __tablename__ = "order_item"
+
+    order_item_id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    order_number: Mapped[int] = mapped_column(Integer, nullable=False)
+    quantity: Mapped[int] = mapped_column(Integer, nullable=False)
+    menu_item_id: Mapped[int] = mapped_column(ForeignKey("menu_item.menu_item_id"), nullable=False)
+
+    menu_item: Mapped["MenuItem"] = relationship("MenuItem", back_populates="order_items")
+
+    def __repr__(self) -> str:
+        return f"OrderItem(id={self.order_item_id}, menu_item_id={self.menu_item_id}, quantity={self.quantity})"
+
+# Create tables
+Base.metadata.create_all(engine)
+
+#END OF ADRIANA'S CODE BLOCK
