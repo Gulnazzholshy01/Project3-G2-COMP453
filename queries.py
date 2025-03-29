@@ -37,3 +37,34 @@ print("")
 print("")
 print("Q4 - Student: ")
 print("")
+
+
+
+# Adriana Esparza - ORM Classes for MenuItem and OrderItem
+# For queries.py
+from classes import engine, MenuItem, OrderItem
+from sqlalchemy.orm import Session
+from sqlalchemy import func
+
+print("")
+print("Q4b.topOrderedMenuItemsByQuantity – Student: Adriana Esparza")
+print("")
+
+with Session(engine) as session:
+    results = (
+        session.query(
+            MenuItem.name,
+            func.sum(OrderItem.quantity).label("total_quantity")
+        )
+        .join(OrderItem)
+        .group_by(MenuItem.name)
+        .order_by(func.sum(OrderItem.quantity).desc())
+        .limit(10)
+        .all()
+    )
+
+    print("Top Ordered Menu Items:")
+    for name, quantity in results:
+        print(f"{name}: {quantity} orders")
+
+#END OF ADRIANA'S CODE BLOCK
