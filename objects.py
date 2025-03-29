@@ -68,3 +68,50 @@ employees = [
 with Session(engine) as session:
     session.add_all(employees)
     session.commit()
+
+# Adriana Esparza - ORM Classes for MenuItem and OrderItem
+# For objects.py
+from classes import engine, MenuItem, OrderItem
+from sqlalchemy.orm import Session
+
+# Sample Menu Items
+menu_items = [
+    MenuItem(menu_item_id=1, name='Cheese Burger', description='Beef burger with cheese', price=8.99, category='Burgers'),
+    MenuItem(menu_item_id=2, name='Veggie Burger', description='Vegan burger with vegetables', price=7.99, category='Burgers'),
+    MenuItem(menu_item_id=3, name='Fries', description='Crispy fries', price=3.49, category='Sides'),
+    MenuItem(menu_item_id=4, name='Hot Dog', description='Classic hot dog with mustard', price=5.00, category='Hot Dogs'),
+    MenuItem(menu_item_id=5, name='Tacos', description='Beef or chicken tacos', price=6.75, category='Mexican'),
+    MenuItem(menu_item_id=6, name='Lemonade', description='Fresh lemonade', price=2.00, category='Beverages'),
+    MenuItem(menu_item_id=7, name='Pizza Slice', description='Pepperoni pizza slice', price=4.00, category='Pizza'),
+    MenuItem(menu_item_id=8, name='Chicken Wrap', description='Grilled chicken wrap', price=6.50, category='Wraps'),
+    MenuItem(menu_item_id=9, name='Caesar Salad', description='Lettuce with Caesar dressing', price=5.50, category='Salads'),
+    MenuItem(menu_item_id=10, name='Ice Cream', description='Vanilla or chocolate', price=3.00, category='Desserts'),
+]
+
+# Sample Order Items
+order_items = [
+    OrderItem(order_item_id=1, order_number=1001, quantity=1, menu_item_id=1),
+    OrderItem(order_item_id=2, order_number=1001, quantity=1, menu_item_id=3),
+    OrderItem(order_item_id=3, order_number=1002, quantity=2, menu_item_id=2),
+    OrderItem(order_item_id=4, order_number=1003, quantity=1, menu_item_id=1),
+    OrderItem(order_item_id=5, order_number=1004, quantity=3, menu_item_id=3),
+    OrderItem(order_item_id=6, order_number=1005, quantity=2, menu_item_id=4),
+    OrderItem(order_item_id=7, order_number=1006, quantity=1, menu_item_id=5),
+    OrderItem(order_item_id=8, order_number=1007, quantity=1, menu_item_id=6),
+    OrderItem(order_item_id=9, order_number=1008, quantity=1, menu_item_id=7),
+    OrderItem(order_item_id=10, order_number=1009, quantity=1, menu_item_id=8),
+    OrderItem(order_item_id=11, order_number=1010, quantity=2, menu_item_id=9),
+    OrderItem(order_item_id=12, order_number=1011, quantity=1, menu_item_id=10),
+]
+
+# Insert into database
+with Session(engine) as session:
+    session.query(OrderItem).delete()
+    session.query(MenuItem).delete()
+    session.commit()
+
+    session.add_all(menu_items)
+    session.add_all(order_items)
+    session.commit()
+
+# END OF ADRIANA'S CODE BLOCK
