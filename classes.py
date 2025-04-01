@@ -93,3 +93,52 @@ class OrderItem(Base):
 Base.metadata.create_all(engine)
 
 #END OF ADRIANA'S CODE BLOCK
+
+
+###ORM Classes for Customer and FoodOrder - Pranati Sukh
+from typing import List
+from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, DECIMAL, DateTime
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
+
+##Connecting to PostgreSQL
+engine = create_engine("postgresql+psycopg2://postgres:sql4me@localhost:5432/Project3")
+
+##Defining the Classes
+class Base(DeclarativeBase):
+    pass
+
+#Class - Customer
+class Customer(Base):
+    __tablename__ = "customer"
+
+    id: Mapped[str] = mapped_column("cID", String(20), primary_key=True)
+    phone_number: Mapped[str] = mapped_column("cPhoneNumber", String(20), nullable=False)
+    name: Mapped[str] = mapped_column("cName", String(100), nullable=False)
+
+    orders: Mapped[List["FoodOrder"]] = relationship("FoodOrder", back_populates="customer")
+
+    def __repr__(self) -> str:
+        return f"Customer(id={self.id!r}, name={self.name!r}, phone={self.phone_number!r})"
+
+#Class - FoodOrder
+class FoodOrder(Base):
+    __tablename__ = "foodOrder"
+
+    number: Mapped[int] = mapped_column("oNumber", Integer, primary_key=True)
+    total_amount: Mapped[DECIMAL] = mapped_column("oTotalAmount", DECIMAL(10, 2))
+    time: Mapped[DateTime] = mapped_column("oTime", DateTime)
+    status: Mapped[str] = mapped_column("oStatus", String(20))
+    customer_id: Mapped[str] = mapped_column("cID", ForeignKey("customer.cID"))
+    truck_id: Mapped[str] = mapped_column("tID", String(20))
+
+    customer: Mapped["Customer"] = relationship("Customer", back_populates="orders")
+
+    def __repr__(self) -> str:
+        return (f"FoodOrder(number={self.number!r}, total_amount={self.total_amount!r}, "
+                f"status={self.status!r}, time={self.time!r}, customer_id={self.customer_id!r}, "
+                f"truck_id={self.truck_id!r})")
+
+##Creating both the Tables 
+Base.metadata.create_all(engine)
+
+###End Code Block - Pranati Sukh
