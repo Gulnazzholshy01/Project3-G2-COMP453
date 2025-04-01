@@ -115,3 +115,88 @@ with Session(engine) as session:
     session.commit()
 
 # END OF ADRIANA'S CODE BLOCK
+
+
+###Insert Customer and FoodOrder - Pranati Sukh 
+from typing import List
+from ClassesPython import engine, Customer, FoodOrder
+from sqlalchemy.orm import Session
+from datetime import datetime
+
+##Inserting Sample Data into Both Tables
+with Session(engine) as session:
+    #Clearing Orders for Testing
+    session.query(FoodOrder).delete()  #Clear FoodOrder first because Customer References It
+    session.query(Customer).delete()    
+
+    #Inserting into Customer
+    c1 = Customer(id="C01", phone_number="6475803436", name="Guy")
+    c2 = Customer(id="C02", phone_number="6781917295", name="Drew")
+    c3 = Customer(id="C03", phone_number="9867457932", name="Martha")
+    c4 = Customer(id="C04", phone_number="1124567890", name="Gertrude")
+    c5 = Customer(id="C05", phone_number="0972468907", name="James")
+    c6 = Customer(id="C06", phone_number="1247542347", name="Leo")
+    c7 = Customer(id="C07", phone_number="9567235656", name="Luke")
+    c8 = Customer(id="C08", phone_number="2346753456", name="Amy")
+    c9 = Customer(id="C09", phone_number="1234565899", name="Jake")
+    c10 = Customer(id="C10", phone_number="4564562237", name="Arnold")
+    c11 = Customer(id="C11", phone_number="1119964434", name="Armie")
+    c12 = Customer(id="C12", phone_number="9875214578", name="Angel")
+    c13 = Customer(id="C13", phone_number="1234899533", name="Trent")
+    c14 = Customer(id="C14", phone_number="8245678945", name="Penelope")
+    c15 = Customer(id="C15", phone_number="2345783455", name="Drake")
+    c16 = Customer(id="C16", phone_number="0764213466", name="Kendrick")
+    c17 = Customer(id="C17", phone_number="5623123673", name="Dante")
+    c18 = Customer(id="C18", phone_number="2843456787", name="Margot")
+    c19 = Customer(id="C19", phone_number="3468007445", name="Mateo")
+    c20 = Customer(id="C20", phone_number="2346845323", name="Henry")
+    c21 = Customer(id="C21", phone_number="1039457683", name="Alan")
+    c22 = Customer(id="C22", phone_number="4568783427", name="Sara")
+    c23 = Customer(id="C23", phone_number="4572444773", name="Sarah")
+    c24 = Customer(id="C24", phone_number="8652456236", name="Jeff")
+    c25 = Customer(id="C25", phone_number="689301903", name="Kyle")
+    c26 = Customer(id="C26", phone_number="6475146577", name="Oliver")
+    c27 = Customer(id="C27", phone_number="6785029476", name="Nick")
+    c28 = Customer(id="C28", phone_number="1238652438", name="Liam")
+    c29 = Customer(id="C29", phone_number="0987654357", name="John")
+    c30 = Customer(id="C30", phone_number="6677743566", name="Maria")
+    c31 = Customer(id="C31", phone_number="8675333006", name="Andrea")
+    c32 = Customer(id="C32", phone_number="4678920345", name="Evan")
+    c33 = Customer(id="C33", phone_number="7789032345", name="Brian")
+    c34 = Customer(id="C34", phone_number="4453321665", name="Yasmine")
+    c35 = Customer(id="C35", phone_number="3334412277", name="Stella")
+
+    session.add_all([c1, c2, c3, c4, c5, c6, c7, c8, c9, c10,
+                     c11, c12, c13, c14, c15, c16, c17, c18, c19, c20,
+                     c21, c22, c23, c24, c25, c26, c27, c28, c29, c30,
+                     c31, c32, c33, c34, c35])
+    session.commit()
+
+#Inserting into FoodOrder
+with Session(engine) as session:
+    o1 = FoodOrder(number=1001, total_amount=25.50, time=datetime(2025, 3, 11, 9, 30), status="pending", customer_id="C01", truck_id="FT001")
+    o2 = FoodOrder(number=1002, total_amount=32.75, time=datetime(2025, 3, 11, 10, 0), status="preparing", customer_id="C02", truck_id="FT002")
+    o3 = FoodOrder(number=1003, total_amount=40.00, time=datetime(2025, 3, 11, 10, 30), status="ready", customer_id="C03", truck_id="FT003")
+    o4 = FoodOrder(number=1004, total_amount=22.25, time=datetime(2025, 3, 11, 11, 0), status="canceled", customer_id="C04", truck_id="FT004")
+    o5 = FoodOrder(number=1005, total_amount=28.50, time=datetime(2025, 3, 11, 11, 30), status="pending", customer_id="C05", truck_id="FT005")
+    o6 = FoodOrder(number=1006, total_amount=35.00, time=datetime(2025, 3, 11, 12, 0), status="ready", customer_id="C06", truck_id="FT006")
+    o7 = FoodOrder(number=1007, total_amount=30.40, time=datetime(2025, 3, 11, 12, 30), status="preparing", customer_id="C07", truck_id="FT007")
+    o8 = FoodOrder(number=1008, total_amount=50.25, time=datetime(2025, 3, 11, 13, 0), status="pending", customer_id="C08", truck_id="FT008")
+    o9 = FoodOrder(number=1009, total_amount=22.15, time=datetime(2025, 3, 11, 13, 30), status="ready", customer_id="C09", truck_id="FT009")
+    o10 = FoodOrder(number=1010, total_amount=29.50, time=datetime(2025, 3, 11, 14, 0), status="pending", customer_id="C10", truck_id="FT010")
+    o11 = FoodOrder(number=1011, total_amount=26.00, time=datetime(2025, 3, 11, 14, 30), status="preparing", customer_id="C11", truck_id="FT001")
+    o12 = FoodOrder(number=1012, total_amount=33.50, time=datetime(2025, 3, 11, 15, 0), status="ready", customer_id="C12", truck_id="FT002")
+    o13 = FoodOrder(number=1013, total_amount=45.00, time=datetime(2025, 3, 11, 15, 30), status="canceled", customer_id="C13", truck_id="FT003")
+    o14 = FoodOrder(number=1014, total_amount=23.75, time=datetime(2025, 3, 11, 16, 0), status="pending", customer_id="C14", truck_id="FT004")
+    o15 = FoodOrder(number=1015, total_amount=31.90, time=datetime(2025, 3, 11, 16, 30), status="ready", customer_id="C15", truck_id="FT005")
+    o16 = FoodOrder(number=1016, total_amount=27.00, time=datetime(2025, 3, 11, 17, 0), status="pending", customer_id="C16", truck_id="FT006")
+    o17 = FoodOrder(number=1017, total_amount=39.50, time=datetime(2025, 3, 11, 17, 30), status="preparing", customer_id="C17", truck_id="FT007")
+    o18 = FoodOrder(number=1018, total_amount=41.25, time=datetime(2025, 3, 11, 18, 0), status="ready", customer_id="C18", truck_id="FT008")
+    o19 = FoodOrder(number=1019, total_amount=29.80, time=datetime(2025, 3, 11, 18, 30), status="pending", customer_id="C19", truck_id="FT009")
+    o20 = FoodOrder(number=1020, total_amount=34.10, time=datetime(2025, 3, 11, 19, 0), status="ready", customer_id="C20", truck_id="FT010")
+
+    session.add_all([o1, o2, o3, o4, o5, o6, o7, o8, o9, o10,
+                     o11, o12, o13, o14, o15, o16, o17, o18, o19, o20])
+    session.commit()
+
+###End Code Block - Pranati Sukh
