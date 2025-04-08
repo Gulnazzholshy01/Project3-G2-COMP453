@@ -1,3 +1,4 @@
+# Gulnaz Zholshy - Query
 from classes import engine, Location, Employee
 from sqlalchemy.orm import  Session, sessionmaker
 from sqlalchemy import select,  func
@@ -25,18 +26,6 @@ with Session() as session:
 
 for location_id, location_address, role, count, avg in locations:
     print(f"lID: {location_id}, lAddress: {location_address}, eRole: {role}, empNumPerRole: {count}, avgSalPerRole: {avg}")
-
-print("")
-print("Q2 - Student: ")
-print("")
-
-print("")
-print("Q3 - Student: ")
-print("")
-
-print("")
-print("Q4 - Student: ")
-print("")
 
 
 
