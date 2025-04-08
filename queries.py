@@ -47,7 +47,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func
 
 print("")
-print("Q4b.topOrderedMenuItemsByQuantity – Student: Adriana Esparza")
+print("Q4.topOrderedMenuItemsByQuantity – Student: Adriana Esparza")
 print("")
 
 with Session(engine) as session:
