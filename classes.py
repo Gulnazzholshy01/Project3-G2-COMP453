@@ -1,3 +1,4 @@
+# Gulnaz Zholshy - ORM Classes for Location and Employee
 from typing import List
 from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, DECIMAL
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, Session
@@ -45,6 +46,7 @@ class Employee(Base):
 #Create Tables
 Base.metadata.create_all(engine)
 
+#END OF GULNAZ'S CODE BLOCK
 
 
 # Adriana Esparza - ORM Classes for MenuItem and OrderItem

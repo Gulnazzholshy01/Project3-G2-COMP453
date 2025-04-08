@@ -1,4 +1,4 @@
-
+# Gulnaz Zholshy - Data Insertion for Location and Employee
 from typing import List
 from classes import engine, Location, Employee
 from sqlalchemy.orm import  Session
@@ -68,6 +68,9 @@ employees = [
 with Session(engine) as session:
     session.add_all(employees)
     session.commit()
+
+# END OF GULNAZ'S CODE BLOCK
+  
 
 # Adriana Esparza - ORM Classes for MenuItem and OrderItem
 # For objects.py
