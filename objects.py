@@ -76,16 +76,21 @@ from sqlalchemy.orm import Session
 
 # Sample Menu Items
 menu_items = [
-    MenuItem(menu_item_id=1, name='Cheese Burger', description='Beef burger with cheese', price=8.99, category='Burgers'),
-    MenuItem(menu_item_id=2, name='Veggie Burger', description='Vegan burger with vegetables', price=7.99, category='Burgers'),
-    MenuItem(menu_item_id=3, name='Fries', description='Crispy fries', price=3.49, category='Sides'),
-    MenuItem(menu_item_id=4, name='Hot Dog', description='Classic hot dog with mustard', price=5.00, category='Hot Dogs'),
-    MenuItem(menu_item_id=5, name='Tacos', description='Beef or chicken tacos', price=6.75, category='Mexican'),
-    MenuItem(menu_item_id=6, name='Lemonade', description='Fresh lemonade', price=2.00, category='Beverages'),
-    MenuItem(menu_item_id=7, name='Pizza Slice', description='Pepperoni pizza slice', price=4.00, category='Pizza'),
-    MenuItem(menu_item_id=8, name='Chicken Wrap', description='Grilled chicken wrap', price=6.50, category='Wraps'),
-    MenuItem(menu_item_id=9, name='Caesar Salad', description='Lettuce with Caesar dressing', price=5.50, category='Salads'),
-    MenuItem(menu_item_id=10, name='Ice Cream', description='Vanilla or chocolate', price=3.00, category='Desserts'),
+    MenuItem(menu_item_id=1, name='Cheese Burger', description='Delicious beef burger with cheese', price=8.99, category='Burgers'),
+    MenuItem(menu_item_id=2, name='Veggie Burger', description='Vegan burger with fresh vegetables', price=7.99, category='Burgers'),
+    MenuItem(menu_item_id=3, name='Fries', description='Crispy golden fries', price=3.49, category='Sides'),
+    MenuItem(menu_item_id=4, name='Onion Rings', description='Crispy battered onion rings', price=4.50, category='Sides'),
+    MenuItem(menu_item_id=5, name='Coke', description='Refreshing Coca-Cola', price=1.50, category='Beverages'),
+    MenuItem(menu_item_id=6, name='Lemonade', description='Freshly squeezed lemonade', price=2.00, category='Beverages'),
+    MenuItem(menu_item_id=7, name='Hot Dog', description='Classic hot dog with mustard', price=5.00, category='Hot Dogs'),
+    MenuItem(menu_item_id=8, name='Chicken Wrap', description='Grilled chicken in a wrap with sauce', price=6.50, category='Wraps'),
+    MenuItem(menu_item_id=9, name='Caesar Salad', description='Crisp romaine lettuce with Caesar dressing', price=5.50, category='Salads'),
+    MenuItem(menu_item_id=10, name='Tacos', description='Soft shell tacos with beef or chicken', price=6.75, category='Mexican'),
+    MenuItem(menu_item_id=11, name='Pulled Pork Sandwich', description='Tender pulled pork in a sandwich', price=7.50, category='Sandwiches'),
+    MenuItem(menu_item_id=12, name='Fish and Chips', description='Crispy fish fillets with fries', price=8.25, category='Seafood'),
+    MenuItem(menu_item_id=13, name='Pizza Slice', description='Pepperoni pizza slice', price=4.00, category='Pizza'),
+    MenuItem(menu_item_id=14, name='Ice Cream', description='Vanilla, chocolate, or strawberry', price=3.00, category='Desserts'),
+    MenuItem(menu_item_id=15, name='Chicken Nuggets', description='Crispy fried chicken nuggets', price=4.99, category='Sides'),
 ]
 
 # Sample Order Items
