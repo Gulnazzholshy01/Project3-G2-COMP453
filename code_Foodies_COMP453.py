@@ -149,6 +149,53 @@ Base.metadata.create_all(engine)
 
 ###End Code Block - Pranati Sukh
 
+## Angelina Carcione- Classes
+from typing import List
+from sqlalchemy import ForeignKey, String, Integer, Float, Time, create_engine
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, Session
+from sqlalchemy import select
+from datetime import time
+
+
+engine = create_engine("postgresql+psycopg2://postgres:22971609@localhost:5432/project3")
+
+class Base(DeclarativeBase):
+    pass
+
+class FoodTruck(Base):
+    __tablename__ = "FoodTruck"
+    
+    tID: Mapped[str] = mapped_column(String, primary_key=True)
+    tStartTime: Mapped[str] = mapped_column(Time)
+    tEndTime: Mapped[str] = mapped_column(Time)
+    tRegistrationNumber: Mapped[str] = mapped_column(String(20))
+    tLicencePlateNumber: Mapped[str] = mapped_column(String(20))
+    lID: Mapped[str] = mapped_column(String(10)) 
+
+    MenuItems: Mapped[List["MenuItem"]] = relationship("MenuItem", back_populates="food_truck", cascade="all, delete-orphan")
+    
+    def __repr__(self) -> str: 
+        return f"FoodTruck(id={self.tID!r}, start={self.tStartTime}, end={self.tEndTime})"
+
+class MenuItem(Base):
+    __tablename__ = "MenuItem"
+    
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    menuItemName: Mapped[str] = mapped_column(String(50))
+    menuItemDescription: Mapped[str] = mapped_column(String(255))
+    menuItemPrice: Mapped[float] = mapped_column(Float)
+    menuItemCategory: Mapped[str] = mapped_column(String(30))
+    
+    food_truck_id: Mapped[str] = mapped_column("food_truck_id", String, ForeignKey("FoodTruck.tID"))  
+    food_truck: Mapped["FoodTruck"] = relationship("FoodTruck", back_populates="MenuItems")
+
+    def __repr__(self) -> str:
+        return f"MenuItem(name={self.menuItemName!r}, price={self.menuItemPrice}, category={self.menuItemCategory})"
+
+###End Code Block - Angelina Carcione
+
 # END OF CLASSES
 
 # OBJECTS
+
+
