@@ -408,3 +408,151 @@ with Session(engine) as session:
     session.commit()
 
 ###End Code Block - Pranati Sukh
+
+## Objects- Angelina Carcione
+
+#Base.metadata.drop_all(engine)
+Base.metadata.create_all(engine)
+ 
+from sqlalchemy.orm import Session
+from datetime import time
+
+with Session(engine) as session:
+    food_truck_1 = FoodTruck(
+        tID='FT001',
+        tStartTime=time(8, 0),
+        tEndTime=time(19, 0),
+        tRegistrationNumber='REG123',
+        tLicencePlateNumber='ABC123',
+        lID='L001',
+        MenuItems=[
+            MenuItem(menuItemName='Cheese Burger', menuItemDescription='Delicious beef burger with cheese', menuItemPrice=8.99, menuItemCategory='Burgers'),
+            MenuItem(menuItemName='Fries', menuItemDescription='Crispy golden fries', menuItemPrice=3.49, menuItemCategory='Sides'),
+            MenuItem(menuItemName='Coke', menuItemDescription='Refreshing Coca-Cola', menuItemPrice=1.50, menuItemCategory='Beverages'),
+        ]
+    )
+    food_truck_2 = FoodTruck(
+        tID='FT002',
+        tStartTime=time(9, 0),
+        tEndTime=time(20, 0),
+        tRegistrationNumber='REG124',
+        tLicencePlateNumber='DEF124',
+        lID='L002',
+        MenuItems=[
+            MenuItem(menuItemName='Onion Rings', menuItemDescription='Crispy battered onion rings', menuItemPrice=4.50, menuItemCategory='Sides'),
+            MenuItem(menuItemName='Veggie Burger', menuItemDescription='Vegan burger with fresh vegetables', menuItemPrice=7.99, menuItemCategory='Burgers'),
+            MenuItem(menuItemName='Chicken Nuggets', menuItemDescription='Crispy fried chicken nuggets', menuItemPrice=4.99, menuItemCategory='Sides'),
+            MenuItem(menuItemName='Cheese Burger', menuItemDescription='Delicious beef burger with cheese', menuItemPrice=8.99, menuItemCategory='Burgers'),
+        ]
+    )
+    food_truck_3 = FoodTruck(
+        tID='FT003',
+        tStartTime=time(7, 0),
+        tEndTime=time(21, 0),
+        tRegistrationNumber='REG125',
+        tLicencePlateNumber='GHI125',
+        lID='L003',
+        MenuItems=[
+            MenuItem(menuItemName='Lemonade', menuItemDescription='Freshly squeezed lemonade', menuItemPrice=2.00, menuItemCategory='Beverages'),
+            MenuItem(menuItemName='Coke', menuItemDescription='Refreshing Coca-Cola', menuItemPrice=1.50, menuItemCategory='Beverages'),
+            MenuItem(menuItemName='Veggie Burger', menuItemDescription='Vegan burger with fresh vegetables', menuItemPrice=7.99, menuItemCategory='Burgers'),
+            MenuItem(menuItemName='Cheese Burger', menuItemDescription='Delicious beef burger with cheese', menuItemPrice=8.99, menuItemCategory='Burgers'),
+        ]
+    )
+    food_truck_4 = FoodTruck(
+        tID='FT004',
+        tStartTime=time(10, 0),
+        tEndTime=time(21, 0),
+        tRegistrationNumber='REG126',
+        tLicencePlateNumber='JKL126',
+        lID='L004',
+        MenuItems=[
+            MenuItem(menuItemName='Hot Dog', menuItemDescription='Classic hot dog with mustard', menuItemPrice=5.00, menuItemCategory='Hot Dogs'),
+            MenuItem(menuItemName='Coke', menuItemDescription='Refreshing Coca-Cola', menuItemPrice=1.50, menuItemCategory='Beverages'),
+            MenuItem(menuItemName='Lemonade', menuItemDescription='Freshly squeezed lemonade', menuItemPrice=2.00, menuItemCategory='Beverages'),
+        ]
+    )    
+    food_truck_5 = FoodTruck(
+        tID='FT005',
+        tStartTime=time(8, 30),
+        tEndTime=time(16, 30),
+        tRegistrationNumber='REG127',
+        tLicencePlateNumber='MNO127',
+        lID='L005',
+        MenuItems=[
+            MenuItem(menuItemName='Chicken Wrap', menuItemDescription='Grilled chicken in a wrap with sauce', menuItemPrice=6.50, menuItemCategory='Wraps'),
+            MenuItem(menuItemName='Caesar Salad', menuItemDescription='Crisp romaine lettuce with Caesar dressing', menuItemPrice=5.50, menuItemCategory='Salads'),
+            MenuItem(menuItemName='Coke', menuItemDescription='Refreshing Coca-Cola', menuItemPrice=1.50, menuItemCategory='Beverages'),
+        ]
+    )    
+    food_truck_6 = FoodTruck(
+        tID='FT006',
+        tStartTime=time(11, 0),
+        tEndTime=time(22, 0),
+        tRegistrationNumber='REG128',
+        tLicencePlateNumber='PQR128',
+        lID='L006',
+        MenuItems=[
+            MenuItem(menuItemName='Tacos', menuItemDescription='Soft shell tacos with beef or chicken', menuItemPrice=6.75, menuItemCategory='Mexican'),
+            MenuItem(menuItemName='Lemonade', menuItemDescription='Freshly squeezed lemonade', menuItemPrice=2.00, menuItemCategory='Beverages'),
+
+        ]
+    )    
+    food_truck_7 = FoodTruck(
+        tID='FT007',
+        tStartTime=time(6, 0),
+        tEndTime=time(15, 0),
+        tRegistrationNumber='REG129',
+        tLicencePlateNumber='STU129',
+        lID='L007',
+        MenuItems=[
+            MenuItem(menuItemName='Pulled Pork Sandwich', menuItemDescription='Tender pulled pork in a sandwich', menuItemPrice=7.50, menuItemCategory='Sandwiches'),
+            MenuItem(menuItemName='Fries', menuItemDescription='Crispy golden fries', menuItemPrice=3.49, menuItemCategory='Sides'),
+            MenuItem(menuItemName='Chicken Nuggets', menuItemDescription='Crispy fried chicken nuggets', menuItemPrice=4.99, menuItemCategory='Sides'),
+        ]
+    )    
+    food_truck_8 = FoodTruck(
+        tID='FT008',
+        tStartTime=time(7, 30),
+        tEndTime=time(15, 30),
+        tRegistrationNumber='REG130',
+        tLicencePlateNumber='VWX130',
+        lID='L008',
+        MenuItems=[
+            MenuItem(menuItemName='Fish and Chips', menuItemDescription='Crispy fish fillets with fries', menuItemPrice=8.25, menuItemCategory='Seafood'),
+            MenuItem(menuItemName='Coke', menuItemDescription='Refreshing Coca-Cola', menuItemPrice=1.50, menuItemCategory='Beverages'),
+        ]
+    )    
+    food_truck_9 = FoodTruck(
+        tID='FT009',
+        tStartTime=time(9, 0),
+        tEndTime=time(19, 0),
+        tRegistrationNumber='REG131',
+        tLicencePlateNumber='YZ1234',
+        lID='L001',
+        MenuItems=[
+            MenuItem(menuItemName='Pizza Slice', menuItemDescription='Pepperoni pizza slice', menuItemPrice=4.00, menuItemCategory='Pizza'),
+        ]
+    )
+    food_truck_10 = FoodTruck(
+        tID='FT010',
+        tStartTime=time(8, 0),
+        tEndTime=time(20, 0),
+        tRegistrationNumber='REG132',
+        tLicencePlateNumber='ABC567',
+        lID='L008',
+        MenuItems=[
+            MenuItem(menuItemName='Ice Cream', menuItemDescription='Vanilla, chocolate, or strawberry', menuItemPrice=3.00, menuItemCategory='Desserts'),
+            MenuItem(menuItemName='Chicken Nuggets', menuItemDescription='Crispy fried chicken nuggets', menuItemPrice=4.99, menuItemCategory='Sides'),
+        ]
+    )
+    
+    session.add_all([food_truck_1, food_truck_2, food_truck_3, food_truck_4, 
+                         food_truck_5, food_truck_6, food_truck_7, food_truck_8, 
+                         food_truck_9, food_truck_10])
+    session.commit()
+
+###End Code Block - Angelina Carcione
+
+
+
