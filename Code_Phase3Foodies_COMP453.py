@@ -50,7 +50,7 @@ class Employee(Base):
 #Create Tables
 Base.metadata.create_all(engine)
 
-#END OF GULNAZ'S CODE BLOCK
+##END OF GULNAZ'S CODE BLOCK
 
 
 # Adriana Esparza - ORM Classes for MenuItem and OrderItem
@@ -98,10 +98,10 @@ class OrderItem(Base):
 # Create tables
 Base.metadata.create_all(engine)
 
-#END OF ADRIANA'S CODE BLOCK
+##END OF ADRIANA'S CODE BLOCK
 
 
-###ORM Classes for Customer and FoodOrder - Pranati Sukh
+##ORM Classes for Customer and FoodOrder - Pranati Sukh
 from typing import List
 from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, DECIMAL, DateTime
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
@@ -147,9 +147,9 @@ class FoodOrder(Base):
 ##Creating both the Tables 
 Base.metadata.create_all(engine)
 
-###End Code Block - Pranati Sukh
+##End Code Block - Pranati Sukh
 
-## Angelina Carcione- Classes
+# Angelina Carcione- Classes
 from typing import List
 from sqlalchemy import ForeignKey, String, Integer, Float, Time, create_engine
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, Session
@@ -192,7 +192,7 @@ class MenuItem(Base):
     def __repr__(self) -> str:
         return f"MenuItem(name={self.menuItemName!r}, price={self.menuItemPrice}, category={self.menuItemCategory})"
 
-###End Code Block - Angelina Carcione
+##End Code Block - Angelina Carcione
 
 # END OF CLASSES
 
@@ -407,7 +407,7 @@ with Session(engine) as session:
                      o11, o12, o13, o14, o15, o16, o17, o18, o19, o20])
     session.commit()
 
-###End Code Block - Pranati Sukh
+## End Code Block - Pranati Sukh
 
 ## Objects- Angelina Carcione
 
@@ -552,7 +552,9 @@ with Session(engine) as session:
                          food_truck_9, food_truck_10])
     session.commit()
 
-###End Code Block - Angelina Carcione
+##End Code Block - Angelina Carcione
+
+# END OF OBJECTS
 
 # QUERIES
 
@@ -665,7 +667,7 @@ else:
     #If No Customers Match the Resutls, Return This Message 
     print("No customers with orders over $35.")
 
-###End Code Block - Pranati Sukh
+##End Code Block - Pranati Sukh
 
 # Query 4: ORM Classes for MenuItem and OrderItem - Adriana Esparza 
 # For queries.py
@@ -694,6 +696,6 @@ with Session(engine) as session:
     for name, quantity in results:
         print(f"{name}: {quantity} orders")
 
-#END OF ADRIANA'S CODE BLOCK
+## END OF ADRIANA'S CODE BLOCK
 
-
+# END OF QUERIES
