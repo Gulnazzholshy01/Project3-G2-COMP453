@@ -556,7 +556,7 @@ with Session(engine) as session:
 
 # QUERIES
 
-# Gulnaz Zholshy - Query
+# Query 1: avgSalPerRoleInLoc- Gulnaz Zholshy 
 from classes import engine, Location, Employee
 from sqlalchemy.orm import  Session, sessionmaker
 from sqlalchemy import select,  func
@@ -585,38 +585,44 @@ with Session() as session:
 for location_id, location_address, role, count, avg in locations:
     print(f"lID: {location_id}, lAddress: {location_address}, eRole: {role}, empNumPerRole: {count}, avgSalPerRole: {avg}")
 
+## Query Q2: Food Trucks and the Menu Items sold- Angelina Carcione
 
-
-# Adriana Esparza - ORM Classes for MenuItem and OrderItem
-# For queries.py
-from classes import engine, MenuItem, OrderItem
-from sqlalchemy.orm import Session
+# Simple Queries
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy import func
+#from classes_project3 import engine, FoodTruck, MenuItem
+from sqlalchemy.orm import Session
+from sqlalchemy import select
 
 print("")
-print("Q4.topOrderedMenuItemsByQuantity – Student: Adriana Esparza")
+print("Q2: Food Trucks and the Menu Items sold - Student: Angelina Carcione")
+print("This query will output the truck, the location, what category of food it is, how many items fall into the category (must be > 1), and the average price of that type of item.")
 print("")
 
 with Session(engine) as session:
-    results = (
+    result = (
         session.query(
-            MenuItem.name,
-            func.sum(OrderItem.quantity).label("total_quantity")
+            FoodTruck.tID,
+            FoodTruck.lID,
+            MenuItem.menuItemCategory,
+            func.count(MenuItem.id).label("numItems"),
+            func.avg(MenuItem.menuItemPrice).label("avgPrice")
         )
-        .join(OrderItem)
-        .group_by(MenuItem.name)
-        .order_by(func.sum(OrderItem.quantity).desc())
-        .limit(10)
+        .select_from(FoodTruck)
+        .join(MenuItem)
+        .group_by(FoodTruck.tID, FoodTruck.lID, MenuItem.menuItemCategory) 
+        .having(func.count(MenuItem.id) > 1) # count of the AMOUNT of items that fall into that category but only if they have more than 1 of that type
+        .order_by(FoodTruck.tID) # the item has to come from the same food truck 
         .all()
     )
 
-    print("Top Ordered Menu Items:")
-    for name, quantity in results:
-        print(f"{name}: {quantity} orders")
-
-#END OF ADRIANA'S CODE BLOCK
-
-
+    for row in result:
+        print(f"Truck ID     : {row.tID}")
+        print(f"Location ID  : {row.lID}")
+        print(f"Category     : {row.menuItemCategory}")
+        print(f"Items Count  : {row.numItems}")
+        print(f"Avg Price    : ${row.avgPrice:.2f}\n")
+        
 ###Query 3: topSpendingCustomersOver$35 - Pranati Sukh
 ##Using Customer and FoodOrder 
 from ClassesPython import engine, Customer, FoodOrder
@@ -661,8 +667,33 @@ else:
 
 ###End Code Block - Pranati Sukh
 
-## Query- Angelina Carcione
+# Query 4: ORM Classes for MenuItem and OrderItem - Adriana Esparza 
+# For queries.py
+from classes import engine, MenuItem, OrderItem
+from sqlalchemy.orm import Session
+from sqlalchemy import func
 
+print("")
+print("Q4.topOrderedMenuItemsByQuantity – Student: Adriana Esparza")
+print("")
 
+with Session(engine) as session:
+    results = (
+        session.query(
+            MenuItem.name,
+            func.sum(OrderItem.quantity).label("total_quantity")
+        )
+        .join(OrderItem)
+        .group_by(MenuItem.name)
+        .order_by(func.sum(OrderItem.quantity).desc())
+        .limit(10)
+        .all()
+    )
+
+    print("Top Ordered Menu Items:")
+    for name, quantity in results:
+        print(f"{name}: {quantity} orders")
+
+#END OF ADRIANA'S CODE BLOCK
 
 
